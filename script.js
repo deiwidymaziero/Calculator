@@ -76,6 +76,11 @@ function calc(){
     }
 
 
+    num2 = '';
+    operationSelect = '';
+
+
+
 
     document.getElementById('resultado').innerHTML = result;
     num1 = result.toString();
@@ -85,14 +90,16 @@ function calc(){
 function reset() {
     num1 = num2 = operationSelect = '';
     document.getElementById('resultado').innerHTML = "";
+
 }
 
-document.addEventListener("keypress", function(event) {
+document.addEventListener("keydown", function(event) {
     console.log("key --", event.key);
     console.log("key --", event.code);
 
     if (isNaN(event.key)){
 
+    console.log(event.key);
         if (event.key == '+'){
             setOperation("+")
         }
@@ -113,18 +120,16 @@ document.addEventListener("keypress", function(event) {
         }
 
         if (event.key == 'Enter'){
-            calc()
+            setOperation("=")
         }
 
+        if (event.key == 'Delete'){
+            reset()
+            console.log("here");
+        }
 
-
-
-
-
-    } else {
+        } else {
         insert(event.key);
-
-
     }
 
 
